@@ -8,7 +8,34 @@ const dates = [
 ];
 
 // TODO: Buatlah fungsi createDate
-const createDate = null;
+const createDate = (dates, index) => {
+  // buat array untuk wadah penyimpanan
+  let result = [];
+  
+  if(index !== undefined){
+    // kondisi index ditemukan
+    // loping dates 
+    for(let i=0; i<dates.length; i++){
+      // isi array result dengan date dan parsing kedalam epoch time
+      result.push(Date.parse(dates[i]));
+    }
+    // mengembalikan result sesuai dengan indexnya
+    // kemudian dirubah menjadi string dan
+    // di pangkas 3 digit terakhir
+    return result[index].toString().slice(0, -3);
+  } else {
+    // kondisi ketika index tidak ditemukan
+    for (let i = 0; i < dates.length; i++) {
+      // push data kedalam array
+      result.push(Date.parse(dates[i]).toString().slice(0, -3))
+    }
+    // mengembalikan seluruh data yang ada di array
+    // sortind data dan kemudian
+    // digabungkan menjadi 1 dipisahkan dengan -
+    return result.sort().join("-")
+  }
+  
+}
 
 // ! JANGAN DIMODIFIKASI
 (() => {
